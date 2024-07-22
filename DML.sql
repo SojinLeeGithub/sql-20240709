@@ -68,9 +68,9 @@ SELECT * FROM example_table WHERE column1 IS NULL;
 UPDATE example_table A SET A.column1 = (
 SELECT B.num
 FROM auto_table B 
-WHERE B. inx = 1
+WHERE B.idx = 1
 );
 
-SELECT example_column2
+SELECT example_column2example_tablecolumn1
 FROM example_table
 WHERE example_column2 = '데이터2';

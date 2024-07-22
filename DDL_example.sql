@@ -17,7 +17,7 @@ CREATE USER 'qatar_developer'@'%' IDENTIFIED BY 'qatar123';
 -- 3. 테이블 생성
 -- 3.1. 참가국 : country (name[가변문자열 30], group_name[가변문자열 5], manager[가변문자열 30], lanking[정수])
 CREATE TABLE country (
-	name VARCHAR(30),
+    name VARCHAR(30),
     group_name VARCHAR(5),
     manager VARCHAR(30),
     lanking INT
@@ -25,25 +25,24 @@ CREATE TABLE country (
 
 -- 3.2. 선수 : player (name[가변문자열 30], age[정수], position[가변문자열 10], uniform_number[정수], country[가변문자열 30])
 CREATE TABLE player (
-	name VARCHAR(30),
+    name VARCHAR(30),
     age INT,
-    podiyion VARCHAR(10),
+    position VARCHAR(10),
     uniform_number INT,
     country VARCHAR(30)
-    
 );
+
 -- 3.3. 경기장 : stadium (name[가변문자열 50], volume[정수], address[문자열])
 CREATE TABLE stadium (
- name VARCHAR(50),
- volume INT,
- address TEXT
+    name VARCHAR(50),
+    volume INT,
+    address TEXT
 );
 
 -- 3.4. 심판 : referee (name[가변문자열 30], age[정수], country[가변문자열 30], position[가변문자열 10])
 CREATE TABLE referee (
-	name VARCHAR(30),
+    name VARCHAR(30),
     age INT,
     country VARCHAR(30),
     position VARCHAR(10)
 );
-
