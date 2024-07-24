@@ -9,6 +9,8 @@ USE practice_sql;
 -- 세금 정수
 -- 비고 장문의 문자열
 
+DROP TABLE transaction;
+
 CREATE TABLE transaction (
     transaction_number INT,
     transaction_date DATE,
@@ -104,8 +106,7 @@ SELECT * FROM transaction
 WHERE note <=> complete;
 
 -- IS : 좌항이 우항과 같으면 true (키워드)
--- IS NOT : 좌항이 우항과 다르면 true(키워드)
-
+-- IS NOT : 좌항이 우항과 다르면 true (키워드)
 SELECT * FROM transaction
 WHERE complete IS TRUE;
 
@@ -117,48 +118,48 @@ WHERE complete IS NOT NULL;
 
 -- BETWEEN a AND b : 좌항이 a보다 크거나 같으면서 b보다 작거나 같으면 true
 -- NOT BETWEEN a AND b : 좌항이 a보다 작거나 b보다 크면 true
-SELECT * FROM tracsaction
+SELECT * FROM transaction
 WHERE transaction_date BETWEEN '2024-07-15' AND '2024-07-20';
 
-SELECT * FROM tracsaction
+SELECT * FROM transaction
 WHERE transaction_date NOT BETWEEN '2024-07-15' AND '2024-07-20';
 
 -- IN() : 주어진 리스트 중에 하나라도 일치하면 true
 -- NOT IN() : 주어진 리스트 중에 하나도 일치하지 않으면 true
-
 SELECT * FROM transaction
 WHERE breakdown IN('노트북', '책상');
 
 -- 논리연산자
+
 -- AND (&&) : 좌항과 우항이 모두 true이면 true
 SELECT * FROM transaction
 WHERE transaction_type = '판매' AND amount >= 1500000;
 
--- OR (||) : 좌항과 우항중 하나라도 true이면 
+-- OR (||) : 좌항과 우항중 하나라도 true이면 true
 SELECT * FROM transaction
 WHERE transaction_date >= '2024-07-15' OR transaction_type = '판매';
 
 -- XOR : 좌항과 우항이 서로 다르면 true
 SELECT * FROM transaction
 WHERE transaction_date >= '2024-07-15' XOR transaction_type = '판매';
--- WHERE transaction_date >= '2024-07-15' AND transaction_type != '판매';
+-- transaction_date >= '2024-07-15' AND transaction_type != '판매'
 -- OR
--- WHERE transaction_date  '2024-07-15' AND transaction_type != '판매';
+-- transaction_date < '2024-07-15' AND transaction_type = '판매'
 
--- LIKE 연산자 : 문자열을 패턴을 기준으로 비교하고자 할 때 사용
+-- LIKE 연산자 : 문자열을 패턴을 기준으로 비교하고자 할때 사용
 -- % : 임의의 개수(0 ~ 무한대)의 문자 표현
--- _ : 임의의 한 개 문자 표현alter
+-- _ : 임의의 한 개 문자 표현
 SELECT * FROM transaction
 WHERE transaction_date LIKE '2024-07-%';
 
 SELECT * FROM transaction
-WHERE transaction_date LIKE '2024-07__%';
+WHERE transaction_date LIKE '2024-07-__';
 
 SELECT * FROM transaction
 WHERE breakdown LIKE '의%';
 
 SELECT * FROM transaction
-WHERE transaction_date Like '$~10';
+WHERE transaction_date LIKE '%-10';
 
 SELECT * FROM transaction
 WHERE transaction_date LIKE '2024-__-13';
@@ -167,18 +168,25 @@ WHERE transaction_date LIKE '2024-__-13';
 -- ORDER BY : 조회 결과를 특정 컬럼 기준으로 정렬
 -- ASC : 오름차순 정렬 / DESC : 내림차순 정렬
 SELECT * FROM transaction
-order by amount DESC;
+ORDER BY amount ASC;
 
 SELECT * FROM transaction
-order by tax, amount DESC;
+ORDER BY amount DESC;
 
 SELECT * FROM transaction
-order by amount DESC, tax;
+ORDER BY tax, amount DESC;
+
+SELECT * FROM transaction
+ORDER BY amount DESC, tax;
 
 -- 중복제거
--- DISTINCT : SELECT 결과 테이블에서 컬럼의 조합을 중복을 제거하여 
+-- DISTINCT : SELECT 결과 테이블에서 컬럼의 조합의 중복을 제거하여 출력
 SELECT DISTINCT breakdown FROM transaction;
 SELECT DISTINCT breakdown, amount FROM transaction;
+
+
+
+
 
 
 
