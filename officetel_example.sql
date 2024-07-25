@@ -1,6 +1,8 @@
 -- 데이터베이스 생성
 -- officetel
 CREATE DATABASE officetel;
+
+-- 사용할 데이터 베이스 선택하는 명령어
 USE officetel;
 
 -- 이메일 인증 테이블
@@ -33,6 +35,8 @@ CREATE TABLE board (
     
 );
 
+DROP TABLE board ;
+
 -- 로그인
 SELECT * FROM user 
 WHERE id = 'QWER1234' AND password = 'qwer1234';
@@ -64,7 +68,7 @@ LIMIT 0 , 10;
 
 -- 게시물 작성
 INSERT INTO board (title, contents, writer_id)
-VALUES ('첫번째 게시물', '안녕하세요', 'qwer1234');
+VALUES ('네번째 게시물', '안녕하세요', 'qwer1234');
 
 
 -- 게시물 상세보기
